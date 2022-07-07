@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.html": "django-html",
+        "*.js": "javascriptreact",
+        "initializer_list": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "xlocale": "cpp"
+    }
+}

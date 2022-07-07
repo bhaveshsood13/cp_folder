@@ -1,0 +1,133 @@
+/**
+ * author: Bhavesh
+**/
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+typedef long double ld;
+typedef string str;
+typedef pair<int, int> pi;
+typedef pair<ll,ll> pl;
+typedef pair<ld,ld> pd;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<ld> vd;
+typedef vector<str> vs;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+
+#define cinarr(ar,n) for(int i=0;i<n;i++){cin>>ar[i];}
+#define car(ar,n) for(int i =0;i<n;i++){cout<<ar[i]<<" ";}
+#define forn(i,a,b) for (int i = (a); i < ll(b); ++i)
+#define fo(i,a) forn(i,0,ll(a))
+#define rforn(i,a,b) for (int i = (b)-1; i >= (a); --i)
+#define ro(i,a) rforn(i,0,a)
+#define trav(a,x) for (auto& a: x)
+
+#define mp make_pair
+#define pb push_back
+#define eb emplace_back
+#define f first
+#define sec second
+ 
+void __print(int x) {cerr << x;}
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
+void _print() {cerr << "]\n";}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
+#ifndef ONLINE_JUDGE
+#define debug(x...) cerr << "[" << #x << "] = ["; _print(x)
+#else
+#define debug(x...)
+#endif
+const ll INF = 1e18;
+
+bool good(int mid, vector<pi> v, int n, string s, string t){
+
+        int p1=0,p2=0,p3=0,p4=0;;
+        string temp;
+
+        while(p4<n){
+            if(v[p3].sec<mid){
+                p4++;
+                p3++;
+            }
+            else{
+                temp+=s[p4];
+                p4++;
+                p3++;
+            }
+        }
+        
+        int n2=temp.length();
+        int n3=t.length();
+        while(p2<n3 and p1<n2){
+            if(temp[p1]==t[p2]){
+                p1++;
+                p2++;
+            }
+            if(temp[p1]!=t[p2]){
+                p1++;
+            }
+        }
+        debug(temp,s,mid,p2,p1);
+        if(p2>=n3){
+            return true;
+        }
+
+
+    else return false;
+
+}
+
+int main(){
+    string s;
+    string t;
+    cin>>s>>t;
+    int n=s.length();
+    vector <pi>v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin>>v[i].f;
+        v[i].sec= i;
+    }
+    sort(v.begin(),v.end());
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout<<v[i].f<<" "<<v[i].sec<<" ";    
+    // }
+    
+    int l=0,r=n;
+
+    while(l<=r){
+        int  mid=(l+r)/2;
+        if(good(mid,v,n,s,t)){
+                l=mid+1;
+        }
+        else
+        {
+            r=mid-1;
+        }
+        
+    }
+    cout<<l-1<<endl;
+
+  return 0;
+  }

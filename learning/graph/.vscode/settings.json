@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "*.html": "django-html",
+        "*.js": "javascriptreact",
+        "string": "cpp",
+        "xstring": "cpp"
+    }
+}
